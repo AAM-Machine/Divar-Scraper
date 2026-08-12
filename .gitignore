@@ -1,0 +1,108 @@
+# ========================================
+# Environment & Secrets
+# ========================================
+
+.env
+.env.*
+!.env.example
+
+# ========================================
+# Python Cache & Compiled Files
+# ========================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ========================================
+# Virtual Environments
+# ========================================
+
+.venv/
+venv/
+env/
+ENV/
+
+# ========================================
+# IDE & Editor Files
+# ========================================
+
+.vscode/
+.idea/
+*.code-workspace
+
+# ========================================
+# Testing & Coverage
+# ========================================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ========================================
+# Build & Packaging
+# ========================================
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ========================================
+# Logs & Runtime Files
+# ========================================
+
+*.log
+*.pid
+*.seed
+
+# ========================================
+# Temporary Files
+# ========================================
+
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ========================================
+# Selenium / Browser Artifacts
+# ========================================
+
+screenshots/
+downloads/
+webdriver/
+chromedriver/
+geckodriver/
+
+# ========================================
+# Local Database Files
+# ========================================
+
+*.sqlite
+*.sqlite3
+*.db
+
+# ========================================
+# Generated / Real Exported Data
+# ========================================
+
+docs/divar_ads.xlsx
+docs/*.csv
+docs/*.json
+
+# Allow synthetic sample data
+!docs/sample_ads.xlsx
+
+# ========================================
+# Local OS Files
+# ========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
