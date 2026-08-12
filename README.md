@@ -209,7 +209,7 @@ This project was developed as a final project for CS50x. No AI-assisted coding t
 
 ## Author
 
-**AAM / Amirali Masoumi**
+**AAM**
 GitHub: [https://github.com/AAM-Machine](https://github.com/AAM-Machine)
 
 ## License
