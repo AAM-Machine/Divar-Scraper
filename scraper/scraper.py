@@ -14,6 +14,9 @@ def main():
         Text,
         UniqueConstraint,
     )
+    import os
+    from dotenv import load_dotenv
+    load_dotenv()
     from sqlalchemy.ext.declarative import declarative_base
     from sqlalchemy.orm import sessionmaker
     from selenium import webdriver
@@ -52,7 +55,15 @@ def main():
         link = Column(String(512), unique=True, nullable=False)
         __table_args__ = (UniqueConstraint("link", name="uq_divar_link"),)
 
-    DATABASE_URL = "postgresql://divar_user:divar_pass@localhost:5432/divar_db"
+    DB_USER = os.getenv("DB_USER")
+    DB_PASS = os.getenv("DB_PASS")
+    DB_HOST = os.getenv("DB_HOST")
+    DB_PORT = os.getenv("DB_PORT")
+    DB_NAME = os.getenv("DB_NAME")
+
+    DATABASE_URL = (
+        f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    )
     engine = create_engine(DATABASE_URL)
     Session = sessionmaker(bind=engine)
     session = Session()
