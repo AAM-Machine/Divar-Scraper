@@ -1,25 +1,16 @@
 # Divar-Scraper
 
-A modular Python application that automates the collection of real-estate listing data, stores it in a PostgreSQL database, exposes it through a FastAPI backend, and provides a Tkinter desktop client for browsing that data. Excel export is available as an additional output path. The project was built as a CS50x final project to explore an end-to-end data pipeline, from browser automation through relational storage to an API-backed desktop UI.
+A modular Python application that explores an end-to-end real-estate data pipeline: browser automation, structured extraction, PostgreSQL storage, a REST API, a desktop client, and Excel export. It was built as a CS50x final project.
 
 ## Overview
 
 Divar-Scraper targets real-estate listings on Divar.ir, Iran's largest classifieds platform, and turns them into structured records — title, price, size, room count, floor, location, amenities, description, images, and the source link. Those records are persisted to PostgreSQL through SQLAlchemy, served over a small REST API built with FastAPI, and made browsable through a Tkinter desktop application. A separate export path can produce an Excel workbook of the stored listings.
 
-The public repository does not contain real scraped data. The sample workbook at `docs/sample_ads.xlsx` is entirely synthetic — see [Sample Data](#docs\sample_ads.xlsx).
+The public repository does not contain real scraped data. The sample workbook at `docs/sample_ads.xlsx` is entirely synthetic — see [Sample Data](#sample-data).
 
-## Project Goals
+## Why This Project Exists
 
-This project was built to work through a full data pipeline in one place:
-
-- browser automation against a real, dynamic website using Selenium
-- turning semi-structured listing pages into a consistent record schema
-- relational modeling and persistence with SQLAlchemy and PostgreSQL
-- a REST API layer with FastAPI, including automatic interactive documentation
-- a desktop client (Tkinter) that consumes that API over HTTP
-- exporting structured data to Excel for offline use
-
-The goal was to connect these pieces — scraping, storage, an API, and a desktop client — into one working pipeline rather than treating each as an isolated exercise. It is a learning and portfolio project, not a deployed or commercially operated service.
+The project exists to connect several parts of a real application — scraping, relational storage, an API, and a desktop client — into one working pipeline, rather than practicing each of those skills in isolation. It's a learning and portfolio project: the goal was to understand how data actually moves from a live webpage to a database to an API to a UI, not to build a production scraping service.
 
 ## Architecture
 
@@ -51,6 +42,7 @@ The scraper visits listing pages, extracts the relevant fields, and writes struc
 - **API** — a FastAPI backend exposing listing data as JSON, with interactive API documentation.
 - **Desktop GUI** — a Tkinter client that requests data from the API and displays it to the user.
 - **Excel export** — writes listing data to a formatted `.xlsx` workbook.
+- **Synthetic sample dataset** — a safe, public demonstration of the exported data structure.
 
 ## Tech Stack
 
@@ -65,7 +57,7 @@ The scraper visits listing pages, extracts the relevant fields, and writes struc
 | Pandas / OpenPyXL | Data handling and Excel generation |
 | python-dotenv | Loading configuration from `.env` |
 
-Exact, pinned dependency versions are defined in `requirements.txt`.
+Project dependencies, with exact versions, are listed in `requirements.txt`.
 
 ## Project Structure
 
@@ -144,10 +136,10 @@ Tkinter GUI → HTTP request → FastAPI → PostgreSQL
 
 ## Requirements
 
-- **Python 3.8+**
-- **PostgreSQL**, running and accessible
-- A **Selenium-supported browser** such as Google Chrome
-- **Selenium WebDriver** support; modern Selenium releases (4.6+) include Selenium Manager, which can automatically manage compatible drivers in many environments
+- Python 3.8+
+- PostgreSQL, running and accessible
+- A Selenium-supported browser, such as Google Chrome
+- Modern Selenium releases (4.6+) include Selenium Manager, which can automatically resolve a compatible WebDriver in most environments
 - Python dependencies listed in `requirements.txt`
 
 ## Installation
@@ -174,6 +166,21 @@ DB_NAME=your_database
 
 Create the target PostgreSQL database beforehand and make sure the server is running before starting the API or scraper.
 
+## Running the Project
+
+```powershell
+# Start the API
+uvicorn api.main:app --reload
+
+# Run the desktop GUI
+python gui/app.py
+
+# Run the scraper
+python scraper/scraper.py
+```
+
+Command-line options for the scraper, if any, are documented in `scraper/scraper.py` itself.
+
 ## Limitations
 
 - Divar's page structure can change, requiring scraper maintenance.
@@ -191,7 +198,7 @@ This tool is intended to be used responsibly:
 - avoid collecting or publishing personal or sensitive information beyond what a listing itself contains publicly
 - keep database credentials and any `.env` file private
 
-This project does not implement, and this documentation does not describe, any method for bypassing CAPTCHAs, anti-bot protections, or rate limiting.
+This project does not implement, and this documentation does not describe, any method for bypassing CAPTCHAs, anti-bot protections, or rate limiting. It is not affiliated with or endorsed by Divar.
 
 ## Future Improvements
 
