@@ -7,3 +7,5 @@ pandas
 selenium
 beautifulsoup4
 openpyxl
+uvicorn
+psycopg[binary]
