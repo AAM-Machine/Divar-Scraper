@@ -54,6 +54,34 @@ The main components are:
 * **Tkinter GUI** — provides a desktop interface for browsing and retrieving listings.
 * **Excel export** — produces `.xlsx` output from collected data.
 
+## Application Preview
+
+### Main Window
+
+The main desktop interface provides direct access to listing search,
+stored listings, and the scraping workflow.
+
+![Divar-Scraper Main Window](docs/images/main-window.png)
+
+### Stored Listings
+
+Collected listings can be browsed through a dedicated table showing
+their ID, title, and location. Double-clicking a listing opens its
+detailed view.
+
+![Stored Listings](docs/images/listings-window.png)
+
+### Listing Details
+
+Individual listings can be retrieved by ID and displayed with their
+property information, pricing, amenities, description, and source URL.
+
+![Listing Details](docs/images/listing-details.png)
+
+
+
+
+
 ## How It Works
 
 ```text
