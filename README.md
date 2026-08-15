@@ -61,7 +61,7 @@ The main components are:
 The main desktop interface provides direct access to listing search,
 stored listings, and the scraping workflow.
 
-![Divar-Scraper Main Window](docs/images/main-window.png)
+![Divar-Scraper Main Window](docs/Main-Window)
 
 ### Stored Listings
 
@@ -69,18 +69,14 @@ Collected listings can be browsed through a dedicated table showing
 their ID, title, and location. Double-clicking a listing opens its
 detailed view.
 
-![Stored Listings](docs/images/listings-window.png)
+![Stored Listings](docs/Stored-Listings)
 
 ### Listing Details
 
 Individual listings can be retrieved by ID and displayed with their
 property information, pricing, amenities, description, and source URL.
 
-![Listing Details](docs/images/listing-details.png)
-
-
-
-
+![Listing Details](docs/Listing-Details)
 
 ## How It Works
 
@@ -246,14 +242,16 @@ PostgreSQL
 
 The GUI can:
 
-* retrieve stored listings through the API
-* search for listings by numeric ID
-* display listing details
-* trigger scraping operations
-* request Excel export through the scraping workflow
-* report connection and lookup errors to the user
-
-The GUI also starts a local Uvicorn process automatically, so the user does not need to launch the API server separately when using the desktop application.
+* retrieve and browse stored listings through the API
+* display listing IDs, titles, and locations in a dedicated listings window
+* open a listing directly by double-clicking it in the listings table
+* search for individual listings by numeric ID
+* display property details, pricing, amenities, location, and description
+* open the original Divar listing in the system web browser
+* copy the complete listing information to the clipboard
+* trigger new scraping operations from the desktop interface
+* generate an Excel export as part of the GUI scraping workflow
+* report API connection, invalid ID, missing listing, and scraper execution errors
 
 ## Sample Data
 
